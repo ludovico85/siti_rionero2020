@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet-svg-shape-markers.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Idrografia_0.js"></script>
+        <script src="data/Cintamurariasannitica_1.js"></script>
+        <script src="data/Areacentrostorico_2.js"></script>
+        <script src="data/Tratturi_3.js"></script>
+        <script src="data/Stradaavalenzapaesaggistica_4.js"></script>
+        <script src="data/Viabilitalocaleeretesentieristica_5.js"></script>
+        <script src="data/Architetturereligiose_6.js"></script>
+        <script src="data/Architetturatradizionale_7.js"></script>
+        <script src="data/Palazzobaronale_8.js"></script>
+        <script src="data/Fontane_9.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[41.67159143931923,14.058661172285559],[41.77625382360524,14.23678540277025]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            map.setMaxBounds(map.getBounds());
+        }
+        
+		var uso_suolo_tiles = L.tileLayer('uso_suolo_tiles/{z}/{x}/{y}.png', {
+        tms: true, 
+		opacity: 0.7, 
+		attribution: ""
+		});
+		
+		var stamen = L.tileLayer('http://{s}.tile.stamen.com/terrain/{z}/{x}/{y}.jpg', {
+            attribution: 'Map tiles by <a href="https://stamen.com/">Stamen design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+            maxZoom: 18
+        });
+
+		
+		
+		
+		
+		function pop_Idrografia_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(String(feature.properties['fid'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Idrografia_0_0() {
+            return {
+                pane: 'pane_Idrografia_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,120,180,1.0)',
+            }
+        }
+        map.createPane('pane_Idrografia_0');
+        map.getPane('pane_Idrografia_0').style.zIndex = 400;
+        map.getPane('pane_Idrografia_0').style['mix-blend-mode'] = 'normal';
+        var layer_Idrografia_0 = new L.geoJson(json_Idrografia_0, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Idrografia_0',
+            onEachFeature: pop_Idrografia_0,
+            style: style_Idrografia_0_0,
+        });
+        bounds_group.addLayer(layer_Idrografia_0);
+        map.addLayer(layer_Idrografia_0);
+        function pop_Cintamurariasannitica_1(feature, layer) {
+        }
+
+        function style_Cintamurariasannitica_1_0() {
+            return {
+                pane: 'pane_Cintamurariasannitica_1',
+                opacity: 1,
+                color: 'rgba(188,21,54,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 3.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(234,53,89,0.0)',
+            }
+        }
+        map.createPane('pane_Cintamurariasannitica_1');
+        map.getPane('pane_Cintamurariasannitica_1').style.zIndex = 401;
+        map.getPane('pane_Cintamurariasannitica_1').style['mix-blend-mode'] = 'normal';
+        var layer_Cintamurariasannitica_1 = new L.geoJson(json_Cintamurariasannitica_1, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Cintamurariasannitica_1',
+            onEachFeature: pop_Cintamurariasannitica_1,
+            style: style_Cintamurariasannitica_1_0,
+        });
+        bounds_group.addLayer(layer_Cintamurariasannitica_1);
+        map.addLayer(layer_Cintamurariasannitica_1);
+        function pop_Areacentrostorico_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Areacentrostorico_2_0() {
+            return {
+                pane: 'pane_Areacentrostorico_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(240,0,68,0.8274509803921568)',
+            }
+        }
+        map.createPane('pane_Areacentrostorico_2');
+        map.getPane('pane_Areacentrostorico_2').style.zIndex = 402;
+        map.getPane('pane_Areacentrostorico_2').style['mix-blend-mode'] = 'normal';
+        var layer_Areacentrostorico_2 = new L.geoJson(json_Areacentrostorico_2, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Areacentrostorico_2',
+            onEachFeature: pop_Areacentrostorico_2,
+            style: style_Areacentrostorico_2_0,
+        });
+        bounds_group.addLayer(layer_Areacentrostorico_2);
+        map.addLayer(layer_Areacentrostorico_2);
+        function pop_Tratturi_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(String(feature.properties['fid'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Tratturi_3_0() {
+            return {
+                pane: 'pane_Tratturi_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(192,255,1,1.0)',
+            }
+        }
+        map.createPane('pane_Tratturi_3');
+        map.getPane('pane_Tratturi_3').style.zIndex = 403;
+        map.getPane('pane_Tratturi_3').style['mix-blend-mode'] = 'normal';
+        var layer_Tratturi_3 = new L.geoJson(json_Tratturi_3, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Tratturi_3',
+            onEachFeature: pop_Tratturi_3,
+            style: style_Tratturi_3_0,
+        });
+        bounds_group.addLayer(layer_Tratturi_3);
+        map.addLayer(layer_Tratturi_3);
+        function pop_Stradaavalenzapaesaggistica_4(feature, layer) {
+        }
+
+        function style_Stradaavalenzapaesaggistica_4_0() {
+            return {
+                pane: 'pane_Stradaavalenzapaesaggistica_4',
+                opacity: 1,
+                color: 'rgba(149,149,149,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 3.0,
+                fillOpacity: 0,
+            }
+        }
+        map.createPane('pane_Stradaavalenzapaesaggistica_4');
+        map.getPane('pane_Stradaavalenzapaesaggistica_4').style.zIndex = 404;
+        map.getPane('pane_Stradaavalenzapaesaggistica_4').style['mix-blend-mode'] = 'normal';
+        var layer_Stradaavalenzapaesaggistica_4 = new L.geoJson(json_Stradaavalenzapaesaggistica_4, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Stradaavalenzapaesaggistica_4',
+            onEachFeature: pop_Stradaavalenzapaesaggistica_4,
+            style: style_Stradaavalenzapaesaggistica_4_0,
+        });
+        bounds_group.addLayer(layer_Stradaavalenzapaesaggistica_4);
+        map.addLayer(layer_Stradaavalenzapaesaggistica_4);
+        function pop_Viabilitalocaleeretesentieristica_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? Autolinker.link(String(feature.properties['fid'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Viabilitalocaleeretesentieristica_5_0() {
+            return {
+                pane: 'pane_Viabilitalocaleeretesentieristica_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(117,116,128,1.0)',
+            }
+        }
+        map.createPane('pane_Viabilitalocaleeretesentieristica_5');
+        map.getPane('pane_Viabilitalocaleeretesentieristica_5').style.zIndex = 405;
+        map.getPane('pane_Viabilitalocaleeretesentieristica_5').style['mix-blend-mode'] = 'normal';
+        var layer_Viabilitalocaleeretesentieristica_5 = new L.geoJson(json_Viabilitalocaleeretesentieristica_5, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Viabilitalocaleeretesentieristica_5',
+            onEachFeature: pop_Viabilitalocaleeretesentieristica_5,
+            style: style_Viabilitalocaleeretesentieristica_5_0,
+        });
+        bounds_group.addLayer(layer_Viabilitalocaleeretesentieristica_5);
+        map.addLayer(layer_Viabilitalocaleeretesentieristica_5);
+        function pop_Architetturereligiose_6(feature, layer) {
+        }
+
+        function style_Architetturereligiose_6_0() {
+            return {
+                pane: 'pane_Architetturereligiose_6',
+                shape: 'square',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(34,44,14,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,158,23,1.0)',
+            }
+        }
+        map.createPane('pane_Architetturereligiose_6');
+        map.getPane('pane_Architetturereligiose_6').style.zIndex = 406;
+        map.getPane('pane_Architetturereligiose_6').style['mix-blend-mode'] = 'normal';
+        var layer_Architetturereligiose_6 = new L.geoJson(json_Architetturereligiose_6, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Architetturereligiose_6',
+            onEachFeature: pop_Architetturereligiose_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Architetturereligiose_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Architetturereligiose_6);
+        map.addLayer(layer_Architetturereligiose_6);
+        function pop_Architetturatradizionale_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Architetturatradizionale_7_0() {
+            return {
+                pane: 'pane_Architetturatradizionale_7',
+                shape: 'square',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(31,120,180,1.0)',
+            }
+        }
+        map.createPane('pane_Architetturatradizionale_7');
+        map.getPane('pane_Architetturatradizionale_7').style.zIndex = 407;
+        map.getPane('pane_Architetturatradizionale_7').style['mix-blend-mode'] = 'normal';
+        var layer_Architetturatradizionale_7 = new L.geoJson(json_Architetturatradizionale_7, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Architetturatradizionale_7',
+            onEachFeature: pop_Architetturatradizionale_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Architetturatradizionale_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Architetturatradizionale_7);
+        map.addLayer(layer_Architetturatradizionale_7);
+        function pop_Palazzobaronale_8(feature, layer) {
+        }
+
+        function style_Palazzobaronale_8_0() {
+            return {
+                pane: 'pane_Palazzobaronale_8',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(246,229,31,1.0)',
+            }
+        }
+        map.createPane('pane_Palazzobaronale_8');
+        map.getPane('pane_Palazzobaronale_8').style.zIndex = 408;
+        map.getPane('pane_Palazzobaronale_8').style['mix-blend-mode'] = 'normal';
+        var layer_Palazzobaronale_8 = new L.geoJson(json_Palazzobaronale_8, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Palazzobaronale_8',
+            onEachFeature: pop_Palazzobaronale_8,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.shapeMarker(latlng, style_Palazzobaronale_8_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Palazzobaronale_8);
+        map.addLayer(layer_Palazzobaronale_8);
+        function pop_Fontane_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Fontane_9_0() {
+            return {
+                pane: 'pane_Fontane_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(83,83,83,0.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,206,227,1.0)',
+            }
+        }
+        map.createPane('pane_Fontane_9');
+        map.getPane('pane_Fontane_9').style.zIndex = 409;
+        map.getPane('pane_Fontane_9').style['mix-blend-mode'] = 'normal';
+        var layer_Fontane_9 = new L.geoJson(json_Fontane_9, {
+            attribution: '<a href=""></a>',
+            pane: 'pane_Fontane_9',
+            onEachFeature: pop_Fontane_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Fontane_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Fontane_9);
+        map.addLayer(layer_Fontane_9);
+        
+		var baseLayer = {"stamen": stamen};
+		//var overlaymaps = {"Layer": uso_suolo_tiles}
+
+		
+		
+
+		
+        L.control.layers(baseLayer,{'<img src="legend/Fontane_9.png" /> Fontane': layer_Fontane_9,'<img src="legend/Palazzobaronale_8.png" /> Palazzo baronale': layer_Palazzobaronale_8,'<img src="legend/Architetturatradizionale_7.png" /> Architettura tradizionale': layer_Architetturatradizionale_7,'<img src="legend/Architetturereligiose_6.png" /> Architetture religiose': layer_Architetturereligiose_6,'<img src="legend/Viabilitalocaleeretesentieristica_5.png" /> Viabilita locale e rete sentieristica': layer_Viabilitalocaleeretesentieristica_5,'<img src="legend/Stradaavalenzapaesaggistica_4.png" /> Strada a valenza paesaggistica': layer_Stradaavalenzapaesaggistica_4,'<img src="legend/Tratturi_3.png" /> Tratturi': layer_Tratturi_3,'<img src="legend/Areacentrostorico_2.png" /> Area centro storico': layer_Areacentrostorico_2,'<img src="legend/Cintamurariasannitica_1.png" /> Cinta muraria sannitica': layer_Cintamurariasannitica_1,'<img src="legend/Idrografia_0.png" /> Idrografia': layer_Idrografia_0, 'Aree naturali e seminaturali <br><img src="legend/idrografia_0.png" /> tizio <br> <img src="legend/idrografia_0 - Copia.png" /> tizio2': uso_suolo_tiles},{collapsed:false}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
